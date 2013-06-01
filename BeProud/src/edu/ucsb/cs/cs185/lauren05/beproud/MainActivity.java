@@ -57,14 +57,14 @@ public class MainActivity extends SherlockFragmentActivity {
 	public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
 		
 		switch (item.getItemId()) {
-		case R.id.today:
+		case R.id.list:
+			Toast.makeText(getBaseContext(), "clicked list", Toast.LENGTH_SHORT).show();
+			saveEntry(this.findViewById(R.layout.activity_main));
 			return true;
 		case R.id.month:
 			Intent intent = new Intent(MainActivity.this, CalendarView.class);
     		intent.putExtra("date", timeStamp);
     		startActivityForResult(intent, PICK_DATE_REQUEST);				
-			return true;
-		case R.id.help:
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -96,7 +96,6 @@ public class MainActivity extends SherlockFragmentActivity {
 		}
 		else
 			Toast.makeText(this.getApplicationContext(), "Oops! It seems you have not entered anything. Please enter an Accomplishment.", Toast.LENGTH_LONG).show();
-
 		
 	} // end saveEntry
 	
@@ -119,11 +118,9 @@ public class MainActivity extends SherlockFragmentActivity {
 		  }
 		  else if(requestCode == PICK_DATE_REQUEST)
 		  {
-			  if(resultCode == RESULT_OK){
+			  if(resultCode == RESULT_OK)
 				  Toast.makeText(getApplicationContext(), data.getStringExtra("date"), Toast.LENGTH_SHORT).show();
-			  }
 		  }
-		  
 		}//onActivityResult
 	
 	 public static String[] deleteAccomplishment(String todaysDate, String accomplishment) {

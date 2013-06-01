@@ -14,7 +14,7 @@
     <string name="dropdown">TODO: picker here</string>
     <string name="today">Today</string>
     <string name="month">Month</string>
-    <string name="help">Help</string>
+    <string name="list">List</string>
     <color name="white">#FFFFFF</color>
     <color name="text_color">#31D1F1</color>
 

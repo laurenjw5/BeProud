@@ -4,14 +4,10 @@ package edu.ucsb.cs.cs185.lauren05.beproud;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-
-
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;

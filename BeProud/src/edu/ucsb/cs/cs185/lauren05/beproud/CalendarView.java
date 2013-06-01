@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Random;
-
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -74,23 +72,21 @@ public class CalendarView extends Activity {
 			}
 		});
 	    
-		gridview.setOnItemClickListener(new OnItemClickListener() {
+	    gridview.setOnItemClickListener(new OnItemClickListener() {
 		    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-		    	//TextView date = (TextView)v.findViewById(R.id.date);
-		        //if(date instanceof TextView && !date.getText().equals("")) {
-		        	Calendar c = Calendar.getInstance();
-		        	
-		        	//TODO: we would want to change this for other countries....
-		        	SimpleDateFormat df = new SimpleDateFormat("mm/dd/yyyy", Locale.US);
-		        	String day = df.format(c.getTime());
+		    	TextView date = (TextView)v.findViewById(R.id.date);
+		        if(date instanceof TextView && !date.getText().equals("")) {
 		        	
 		        	Intent intent = new Intent();
-
+		        	String day = date.getText().toString();
+		        	if(day.length()==1) {
+		        		day = "0"+day;
+		        	}
 		        	// return chosen date as string format 
-		        	intent.putExtra("date", day.toCharArray());
+		        	intent.putExtra("date", android.text.format.DateFormat.format("yyyy-MM", month)+"-"+day);
 		        	setResult(RESULT_OK, intent);
 		        	finish();
-		        //}
+		        }
 		        
 		    }
 		});

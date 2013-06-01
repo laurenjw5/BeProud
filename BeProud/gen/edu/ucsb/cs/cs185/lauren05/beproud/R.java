@@ -978,9 +978,10 @@ containing a value of this type.
         public static final int edit_query=0x7f040026;
         public static final int gridview=0x7f04003b;
         public static final int header=0x7f040037;
-        public static final int help=0x7f040040;
         public static final int homeAsUp=0x7f040006;
+        public static final int list=0x7f04003e;
         public static final int listMode=0x7f040002;
+        public static final int listview=0x7f040032;
         public static final int month=0x7f04003f;
         public static final int next=0x7f04003a;
         public static final int normal=0x7f040001;
@@ -989,10 +990,8 @@ containing a value of this type.
         public static final int showHome=0x7f040005;
         public static final int showTitle=0x7f040007;
         public static final int tabMode=0x7f040003;
-        public static final int textView1=0x7f040032;
         public static final int textView2=0x7f040034;
         public static final int title=0x7f040039;
-        public static final int today=0x7f04003e;
         public static final int useLogo=0x7f040004;
         public static final int wrap_content=0x7f040000;
     }
@@ -1078,7 +1077,7 @@ containing a value of this type.
         public static final int choose_value=0x7f090012;
         public static final int dropdown=0x7f090017;
         public static final int hello_world=0x7f09000f;
-        public static final int help=0x7f09001a;
+        public static final int list=0x7f09001a;
         public static final int month=0x7f090019;
         public static final int mood=0x7f090015;
         public static final int numberone=0x7f090010;
