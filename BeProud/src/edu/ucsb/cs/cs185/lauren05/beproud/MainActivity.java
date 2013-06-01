@@ -1,35 +1,42 @@
 package edu.ucsb.cs.cs185.lauren05.beproud;
 
-import java.sql.Date;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-
 import android.os.Bundle;
-import android.app.Activity;
-import android.app.AlertDialog;
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.text.format.DateFormat;
 import android.util.AttributeSet;
-import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Map;
 
-public class MainActivity extends Activity {
+//import android.app.Activity;
+//import android.app.AlertDialog;
+//import android.content.DialogInterface;
+//import android.text.format.DateFormat;
+//import android.view.Menu;
+//import java.sql.Date;
 
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+
+public class MainActivity extends SherlockFragmentActivity {
+
+	
 	String timeStamp;
+	static final int PICK_DATE_REQUEST = 2;
 	static Map<String,ArrayList<String> > entryObject = null;
 	
+	@SuppressLint("SimpleDateFormat")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,10 +47,28 @@ public class MainActivity extends Activity {
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+		super.getSupportMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item) {
+		
+		switch (item.getItemId()) {
+		case R.id.list:
+			Toast.makeText(getBaseContext(), "clicked list", Toast.LENGTH_SHORT).show();
+			saveEntry(this.findViewById(R.layout.activity_main));
+			return true;
+		case R.id.month:
+			Intent intent = new Intent(MainActivity.this, CalendarView.class);
+    		intent.putExtra("date", timeStamp);
+    		startActivityForResult(intent, PICK_DATE_REQUEST);				
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 	
 	public void saveEntry(View v){
@@ -71,7 +96,6 @@ public class MainActivity extends Activity {
 		}
 		else
 			Toast.makeText(this.getApplicationContext(), "Oops! It seems you have not entered anything. Please enter an Accomplishment.", Toast.LENGTH_LONG).show();
-
 		
 	} // end saveEntry
 	
@@ -91,6 +115,11 @@ public class MainActivity extends Activity {
 		     if (resultCode == RESULT_CANCELED) {    
 		         //Write your code if there's no result
 		     }
+		  }
+		  else if(requestCode == PICK_DATE_REQUEST)
+		  {
+			  if(resultCode == RESULT_OK)
+				  Toast.makeText(getApplicationContext(), data.getStringExtra("date"), Toast.LENGTH_SHORT).show();
 		  }
 		}//onActivityResult
 	
@@ -112,8 +141,7 @@ public class MainActivity extends Activity {
     //this.setPadding(100, this.getPaddingTop(), this.getPaddingRight(), this.getPaddingBottom());
     
   }
-   
-   
+ 
   	private Rect mRect;
     private Paint mPaint; 
     private Paint redPaint;
