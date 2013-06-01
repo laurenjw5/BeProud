@@ -41,7 +41,6 @@ public class EntryListActivity extends ListActivity {
 	@Override
 	public void onBackPressed() {
 		this.finish(); // should bring us back to MainActivity
-	
 	}
 	
 	@Override 
@@ -75,7 +74,7 @@ public class EntryListActivity extends ListActivity {
 							case 2: //delete
 								String[] newStringArr = MainActivity.deleteAccomplishment(todaysDate, selectedAccomplishment);
 								changeUserInput(newStringArr);
-							    Toast.makeText(getApplicationContext(), "Accomplishment Successfully Deleted!", Toast.LENGTH_LONG).show();
+							    Toast.makeText(getApplicationContext(), "Delete successful!", Toast.LENGTH_LONG).show();
 								try {
 									this.finalize();
 								} catch (Throwable e) {
@@ -90,8 +89,7 @@ public class EntryListActivity extends ListActivity {
 						}
 					})
 					.setCancelable(true);
-		
-	
+
 
 		// create alert dialog
 		AlertDialog alertDialog = alertDialogBuilder.create();
