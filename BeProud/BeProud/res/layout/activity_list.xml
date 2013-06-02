@@ -1,6 +1,4 @@
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/textView1"
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listview"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="TextView"
-    android:textAppearance="?android:attr/textAppearanceMedium" />
+    android:layout_height="wrap_content" /> 
